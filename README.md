@@ -51,3 +51,5 @@ The API was tested using curl on a test image :
 ![Screenshot From 2025-05-28 21-27-23](https://github.com/user-attachments/assets/4e607e7f-f1ba-41e6-827e-3fe3c862cc50)
 
 The response was returned in 10 seconds.
+
+Loom Video Link ( contains procedure overview and testing ) : https://www.loom.com/share/8b376750a7f146458aa711126d553c78?sid=ab29e7a7-3bb6-4dc4-b246-05c8278ead4c
