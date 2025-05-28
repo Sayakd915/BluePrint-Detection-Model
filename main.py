@@ -4,6 +4,7 @@ from ultralytics import YOLO
 from PIL import Image
 import numpy as np
 import io
+import uvicorn
 
 model = YOLO("runs/train/blueprint_yolo_local/weights/best.pt")
 app = FastAPI()
@@ -35,3 +36,6 @@ async def detect_objects(file: UploadFile = File(...)):
         })
 
     return {"detections": detections}
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
