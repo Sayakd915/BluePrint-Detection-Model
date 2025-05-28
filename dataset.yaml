@@ -1,5 +1,0 @@
-train: split/images/train
-val: split/images/val
-
-nc: 2
-names: ['door', 'window']
