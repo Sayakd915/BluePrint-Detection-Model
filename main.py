@@ -6,21 +6,29 @@ import numpy as np
 import io
 import uvicorn
 
-model = YOLO("runs/train/blueprint_yolo_local/weights/best.pt")
 app = FastAPI()
-
+model = None 
 LABELS = ['door', 'window']
+
+def load_model():
+    global model
+    if model is None:
+        model = YOLO("runs/train/blueprint_yolo_local/weights/best.pt")
+    return model
 
 @app.post("/detect")
 async def detect_objects(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(('.jpg', '.jpeg', '.png')):
         return JSONResponse(content={"error": "Unsupported file type"}, status_code=400)
 
+    current_model = load_model()
+
     contents = await file.read()
     img = Image.open(io.BytesIO(contents)).convert("RGB")
+    img = img.resize((640, 640))
     img_array = np.array(img)
 
-    results = model(img_array)[0]
+    results = current_model(img_array)[0]
     detections = []
 
     for box in results.boxes:
