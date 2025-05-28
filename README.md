@@ -1,2 +1,12 @@
+---
+sdk: docker
+app_port: 8000
+---
+
 # BluePrint-Detection-Model
-A take home assessment given as a hiring round of Vision Intern at Palcode.ai. Model detects windows and doors in a blueprint
+
+This project is a take-home assessment for the Vision Intern hiring round at Palcode.ai. The model uses YOLOv8s to detect windows and doors in architectural blueprints, built as a FastAPI application for easy inference via an API endpoint.
+
+## Overview
+
+The BluePrint-Detection-Model is designed to identify and localize windows and doors in blueprint images. It uses a fine-tuned YOLOv8s model trained on a custom dataset of blueprints. The API accepts image uploads and returns bounding box coordinates, labels (`window` or `door`), and confidence scores for detected objects.
